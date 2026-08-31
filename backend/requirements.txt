@@ -1,0 +1,17 @@
+# Core Framework & REST API
+Django>=5.0,<6.0
+djangorestframework>=3.14.0
+django-cors-headers>=4.3.0
+djangorestframework-simplejwt>=5.3.0
+
+# Database Engine (MariaDB / MySQL Connector)
+mysqlclient>=2.2.0
+
+# Data Analysis & Financial Modeling
+pandas>=2.1.0
+numpy>=1.26.0
+scipy>=1.11.0
+
+# Environment Variables & Utilities
+python-dotenv>=1.0.0
+gunicorn>=21.2.0
