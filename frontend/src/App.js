@@ -8,12 +8,12 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="flex min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200" dir="rtl">
+        <div className="flex min-h-screen bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200" dir="rtl">
           {/* Sidebar */}
           <Sidebar />
 
           {/* Main Content Area */}
-          <main className="flex-1 p-8 overflow-y-auto">
+          <main className="flex-1 p-8 overflow-y-auto bg-slate-50 dark:bg-slate-900/50">
             <Routes>
               <Route path="/" element={<Dashboard />} />
             </Routes>

@@ -16,15 +16,15 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 dark:bg-slate-950 text-white min-h-screen p-4 flex flex-col justify-between border-l border-slate-800">
+    <aside className="w-64 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200 min-h-screen p-4 flex flex-col justify-between border-l border-slate-200 dark:border-slate-800 transition-colors duration-200">
       <div>
-        <div className="flex items-center gap-3 px-2 py-4 border-b border-slate-800 mb-6">
-          <div className="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center font-bold text-xl text-white">
+        <div className="flex items-center gap-3 px-2 py-4 border-b border-slate-200 dark:border-slate-800 mb-6">
+          <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-xl text-white shadow-sm">
             جـ
           </div>
           <div>
-            <h1 className="font-bold text-lg leading-none">منصة جَدْوَى</h1>
-            <span className="text-xs text-slate-400">Jadwa Platform</span>
+            <h1 className="font-bold text-lg leading-none text-slate-900 dark:text-white">منصة جَدْوَى</h1>
+            <span className="text-xs text-slate-500 dark:text-slate-400">Jadwa Platform</span>
           </div>
         </div>
 
@@ -36,10 +36,10 @@ const Sidebar = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                   isActive
-                    ? 'bg-brand-600 text-white'
-                    : 'text-slate-300 hover:bg-slate-800 dark:hover:bg-slate-900 hover:text-white'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -50,19 +50,16 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* Dark/Light Mode Toggle Button */}
-      <div className="pt-4 border-t border-slate-800">
+      {/* Dark/Light Toggle */}
+      <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
         <button
           onClick={toggleTheme}
-          className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors"
+          className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
           <div className="flex items-center gap-3">
-            {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-slate-400" />}
+            {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-slate-600" />}
             <span>{theme === 'dark' ? 'الوضع المضيء' : 'الوضع الداكن'}</span>
           </div>
-          <span className="text-xs px-2 py-0.5 rounded bg-slate-800 dark:bg-slate-900 text-slate-400 uppercase">
-            {theme}
-          </span>
         </button>
       </div>
     </aside>

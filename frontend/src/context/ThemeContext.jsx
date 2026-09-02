@@ -4,11 +4,14 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) return savedTheme;
+    // System preference fallback
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
     } else {
