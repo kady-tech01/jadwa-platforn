@@ -2,11 +2,15 @@
 Django settings for config project.
 """
 
+import sys
 from pathlib import Path
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Add 'apps' folder to Python path so Django can discover internal apps cleanly
+sys.path.insert(0, str(BASE_DIR / 'apps'))
 
 
 SECRET_KEY = 'django-insecure-&v(m8_4*mjx@g+4t&63kxs@^^rtq^$_*o#x43cdd259l&vr@bf'
@@ -19,6 +23,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # Default Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,18 +32,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third-Party Apps
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
-    'corsheaders',
 
-    # Internal Apps
+    # Internal Apps (loaded via sys.path insertion above)
     'apps.authentication',
     'apps.projects',
     'apps.analytics',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # 👈 يجب أن يكون في البداية لمعالجة CORS
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,5 +129,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
 ]
 CORS_ALLOW_CREDENTIALS = True
